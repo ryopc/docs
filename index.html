@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ryopc Official Documentation Hub</title>
-    
-    <!-- 🎨 メインHPと共通のファビコンを設定 -->
     <link rel="icon" type="image/png" href="favicon.png">
-    
     <style>
         :root {
             --primary: #0052cc;      /* 進化したテック・ブルー */
@@ -16,96 +13,36 @@
             --bg: #f8fafc;           /* クリーンな背景グレー */
             --text: #334155;
         }
-        
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
+            margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
-
         header {
             background: linear-gradient(135deg, var(--dark) 0%, #172a45 100%);
-            color: white;
-            padding: 4rem 1.2rem;
-            text-align: center;
-            border-bottom: 4px solid var(--accent);
+            color: white; padding: 4rem 1.2rem; text-align: center; border-bottom: 4px solid var(--accent);
         }
-
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            margin: 0; font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;
             background: linear-gradient(to right, #ffffff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            word-wrap: break-word;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; word-wrap: break-word;
         }
-
-        header p {
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 1.2rem auto 0 auto;
-            color: #94a3b8;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 2rem auto;
-            padding: 0 1.2rem;
-        }
-
+        header p { font-size: 1.05rem; max-width: 600px; margin: 1.2rem auto 0 auto; color: #94a3b8; }
+        .container { max-width: 850px; margin: 2rem auto; padding: 0 1.2rem; }
         .docs-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            margin-bottom: 2rem;
-            border: 1px solid #e2e8f0;
-            text-align: left;
-            transition: all 0.2s ease;
+            background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem; border: 1px solid #e2e8f0; text-align: left; transition: all 0.2s ease;
         }
-
         h2 {
-            color: var(--dark);
-            font-size: 1.5rem;
-            margin-top: 0;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            color: var(--dark); font-size: 1.5rem; margin-top: 0; border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
         }
-
-        h2::before {
-            content: "🔷";
-            color: var(--accent);
-            font-size: 1.1rem;
-        }
-
-        p, ul {
-            font-size: 1rem;
-            color: #475569;
-        }
-
-        ul {
-            padding-left: 1.2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* 👑 規約ページへ美しく誘導するサイバーリンクボタン */
+        h2::before { content: "🔷"; color: var(--accent); font-size: 1.1rem; }
+        p, ul { font-size: 1rem; color: #475569; }
+        ul { padding-left: 1.2rem; } li { margin-bottom: 0.5rem; }
+        
+        /* 👑 見栄えを追求したクリーンURL（/terms と /privacy）への誘導ボタン */
         .doc-link-button {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary) 0%, #0043a4 100%);
@@ -120,46 +57,19 @@
             transition: all 0.2s ease;
             box-shadow: 0 4px 6px rgba(0, 82, 204, 0.15);
         }
-
         .tech-badge {
-            display: inline-block;
-            background-color: #f1f5f9;
-            color: var(--dark);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            border: 1px solid #cbd5e1;
-            margin: 0.2rem;
+            display: inline-block; background-color: #f1f5f9; color: var(--dark);
+            padding: 0.2rem 0.6rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem;
+            border: 1px solid #cbd5e1; margin: 0.2rem;
         }
-
-        footer {
-            background-color: var(--dark);
-            color: #94a3b8;
-            padding: 2.5rem 1.2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* 📱 スマホとパソコンの自動感知メディアクエリ */
+        footer { background-color: var(--dark); color: #94a3b8; padding: 2.5rem 1.2rem; text-align: center; font-size: 0.9rem; }
         @media (hover: hover) and (pointer: fine) {
-            header { padding: 5rem 1rem; }
-            header h1 { font-size: 3rem; }
-            .docs-section:hover {
-                border-color: var(--accent);
-                box-shadow: 0 15px 30px rgba(0, 82, 204, 0.08);
-            }
-            .doc-link-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 12px rgba(0, 82, 204, 0.3);
-                filter: brightness(1.1);
-            }
+            header { padding: 5rem 1rem; } header h1 { font-size: 3rem; }
+            .docs-section:hover { border-color: var(--accent); box-shadow: 0 15px 30px rgba(0, 82, 204, 0.08); }
+            .doc-link-button:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 82, 204, 0.3); filter: brightness(1.1); }
             h2 { font-size: 1.7rem; }
         }
-
-        @media (hover: none) {
-            header h1 { font-size: calc(1.8rem + 2vw); }
-        }
+        @media (hover: none) { header h1 { font-size: calc(1.8rem + 2vw); } }
     </style>
 </head>
 <body>
@@ -183,13 +93,13 @@
             </ul>
         </div>
 
-        <!-- SECTION 2: 👑 独立ページへのゲートウェイに変貌 -->
+        <!-- SECTION 2: 👑 見栄え最高のクリーンURLへリンク変更 -->
         <div class="docs-section">
             <h2>2. Legal Compliance Agreements (公式規約・方針)</h2>
             <p>To ensure strict corporate and ethical alignment with international regulations (including GDPR guidelines), our regulatory frameworks are distributed across specialized canonical documents.</p>
             
-            <a href="terms.html" class="doc-link-button">Terms of Service (利用規約) ➔</a>
-            <a href="privacy.html" class="doc-link-button" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid var(--accent);">Privacy Policy (個人情報保護) ➔</a>
+            <a href="terms/" class="doc-link-button">Terms of Service (利用規約) ➔</a>
+            <a href="privacy/" class="doc-link-button" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid var(--accent);">Privacy Policy (個人情報保護) ➔</a>
         </div>
 
         <!-- SECTION 3 -->
