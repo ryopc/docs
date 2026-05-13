@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ryopc Global Digital Support</title>
-    
-    <!-- 🎨 メイン共通ファビコン -->
-    <link rel="icon" type="image/png" href="./favicon.png">
-    
+    <title>ryopc Official Documentation Hub</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         :root {
-            --primary: #0052cc;      /* テック・ブルー */
+            --primary: #0052cc;      /* 進化したテック・ブルー */
             --dark: #0a192f;         /* サイバー・ダークネイビー */
             --accent: #00bfff;       /* サイバー・アクアブルー */
-            --bg: #f8fafc;           /* 背景グレー */
+            --bg: #f8fafc;           /* クリーンな背景グレー */
             --text: #334155;
         }
-        
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.6;
+            margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
-
         header {
             background: linear-gradient(135deg, var(--dark) 0%, #172a45 100%);
             color: white; padding: 4rem 1.2rem; text-align: center; border-bottom: 4px solid var(--accent);
@@ -34,169 +29,99 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; word-wrap: break-word;
         }
         header p { font-size: 1.05rem; max-width: 600px; margin: 1.2rem auto 0 auto; color: #94a3b8; }
-
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 1.2rem; }
-        .card {
-            background: white; padding: 1.8rem; border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); margin-bottom: 1.8rem;
-            border: 1px solid #e2e8f0; transition: all 0.2s ease; -webkit-tap-highlight-color: transparent;
+        .container { max-width: 850px; margin: 2rem auto; padding: 0 1.2rem; }
+        .docs-section {
+            background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem; border: 1px solid #e2e8f0; text-align: left; transition: all 0.2s ease;
         }
-
-        .docs-link-button {
-            display: block; background: linear-gradient(135deg, var(--primary) 0%, #0043a4 100%);
-            color: white !important; text-decoration: none; padding: 1rem 1.5rem; border-radius: 12px;
-            font-weight: 700; font-size: 1.1rem; text-align: center; margin-top: 2rem;
-            box-shadow: 0 6px 15px rgba(0, 82, 204, 0.2); transition: all 0.2s ease;
+        h2 {
+            color: var(--dark); font-size: 1.5rem; margin-top: 0; border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
         }
-
-        h2 { color: var(--dark); font-size: 1.4rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem; }
-        h2::before { content: "⚡"; color: var(--accent); }
-        p { font-size: 1rem; color: #475569; }
-
+        h2::before { content: "🔷"; color: var(--accent); font-size: 1.1rem; }
+        p, ul { font-size: 1rem; color: #475569; }
+        ul { padding-left: 1.2rem; } li { margin-bottom: 0.5rem; }
+        
+        /* 👑 見栄えを追求したクリーンURL（/terms と /privacy）への誘導ボタン */
+        .doc-link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, #0043a4 100%);
+            color: white !important;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            margin-right: 0.5rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 82, 204, 0.15);
+        }
+        .tech-badge {
+            display: inline-block; background-color: #f1f5f9; color: var(--dark);
+            padding: 0.2rem 0.6rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem;
+            border: 1px solid #cbd5e1; margin: 0.2rem;
+        }
         footer { background-color: var(--dark); color: #94a3b8; padding: 2.5rem 1.2rem; text-align: center; font-size: 0.9rem; }
-        .status-badge {
-            display: inline-block; background-color: #1e293b; color: var(--accent); padding: 0.4rem 1rem;
-            border-radius: 9999px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0, 191, 255, 0.2); margin-top: 1rem;
-        }
-
-        /* 🍪 GDPR対応：画面最下部に固定されるサイバークッキー同意バナー */
-        #cookie-banner {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background-color: #0f172a; color: white;
-            padding: 1.5rem; text-align: left;
-            border-top: 2px solid var(--accent);
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
-            z-index: 99999;
-            display: none; /* JavaScriptで自動感知制御 */
-        }
-        .cookie-content {
-            max-width: 1000px; margin: 0 auto;
-            display: flex; flex-direction: column; gap: 1rem;
-        }
-        .cookie-text { font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; }
-        .cookie-text a { color: var(--accent); text-decoration: underline; }
-        .cookie-btns { display: flex; gap: 0.5rem; justify-content: flex-end; }
-        .cookie-btn {
-            padding: 0.6rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem;
-            cursor: pointer; border: none; transition: all 0.2s ease; -webkit-tap-highlight-color: transparent;
-        }
-        .cookie-accept { background: var(--accent); color: var(--dark); }
-        .cookie-decline { background: #334155; color: #94a3b8; }
-
-        /* 🤖 自動感知テクノロジー */
         @media (hover: hover) and (pointer: fine) {
-            header { padding: 5rem 1rem; } header h1 { font-size: 3rem; } header p { font-size: 1.3rem; }
-            .card { padding: 2.5rem; margin-bottom: 2.5rem; }
-            .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
-            .docs-link-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 82, 204, 0.35); filter: brightness(1.1); }
-            .cookie-content { flex-direction: row; align-items: center; justify-content: space-between; }
-            .cookie-text { max-width: 70%; }
-            .cookie-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
-            h2 { font-size: 1.8rem; } p { font-size: 1.1rem; }
+            header { padding: 5rem 1rem; } header h1 { font-size: 3rem; }
+            .docs-section:hover { border-color: var(--accent); box-shadow: 0 15px 30px rgba(0, 82, 204, 0.08); }
+            .doc-link-button:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 82, 204, 0.3); filter: brightness(1.1); }
+            h2 { font-size: 1.7rem; }
         }
-
-        @media (hover: none) {
-            header h1 { font-size: calc(1.8rem + 2vw); }
-            .docs-link-button:active { filter: brightness(0.9); transform: scale(0.98); }
-            .cookie-btn:active { transform: scale(0.95); }
-        }
+        @media (hover: none) { header h1 { font-size: calc(1.8rem + 2vw); } }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>ryopc org</h1>
-        <p>Ensuring everyone, everywhere, has access to legitimate support for digital devices.</p>
+        <h1>ryopc Official Documentation</h1>
+        <p>Central blueprint hub for technical architectures, guidelines, and legal frameworks.</p>
     </header>
 
     <div class="container">
-        <div class="card">
-            <h2>Our Mission (使命)</h2>
-            <p>Led by ryopcCEO, <strong>ryopc</strong> is a digital-first global initiative. We believe that access to technology is a fundamental right, and fair, transparent support is essential to maintain it. We protect users from fraudulent support practices worldwide.</p>
+
+        <!-- SECTION 1 -->
+        <div class="docs-section">
+            <h2>1. Global Operational Framework (運営大綱)</h2>
+            <p>Led by ryopcCEO, <strong>ryopc-org</strong> operates as a borderless, decentralized tech initiative. Our structure is built to scale continuously, bypassing traditional bureaucratic latency to achieve immediate global impact.</p>
+            <h3>Core Operating Principles:</h3>
+            <ul>
+                <li><strong>Zero-Barrier Access:</strong> No individual should be locked out of essential digital support due to geographic or financial limitations.</li>
+                <li><strong>Privacy First:</strong> Both our users and our core administrators operate within a paradigm that perfectly shields personal tracking data.</li>
+                <li><strong>Decentralized Infrastructure:</strong> Utilizing premier international hosting and communication architectures to maintain 100% uptime and global legitimacy.</li>
+            </ul>
         </div>
 
-        <div class="card">
-            <h2>Our Services (今後の展開)</h2>
-            <p>We provide a multi-layered ecosystem including legitimate device guidance and digital literacy advocacy. We plan to sequentially launch diverse digital solutions to meet the evolving needs of the global community.</p>
+        <!-- SECTION 2: 👑 見栄え最高のクリーンURLへリンク変更 -->
+        <div class="docs-section">
+            <h2>2. Legal Compliance Agreements (公式規約・方針)</h2>
+            <p>To ensure strict corporate and ethical alignment with international regulations (including GDPR guidelines), our regulatory frameworks are distributed across specialized canonical documents.</p>
+            
+            <a href="terms/" class="doc-link-button">Terms of Service (利用規約) ➔</a>
+            <a href="privacy/" class="doc-link-button" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid var(--accent);">Privacy Policy (個人情報保護) ➔</a>
         </div>
 
-        <a href="docs/" class="docs-link-button">View Project Documentation (公式ドキュメント閲覧) ➔</a>
+        <!-- SECTION 3 -->
+        <div class="docs-section">
+            <h2>3. Automated Infrastructure Stack (技術スタック体系)</h2>
+            <p>ryopc leverages a hyper-efficient, fully automated management matrix to operate seamlessly across the globe without administrative overhead.</p>
+            <h3>Current Production Matrix:</h3>
+            <div>
+                <span class="tech-badge">GitHub Organization</span>
+                <span class="tech-badge">GitHub Pages (HTML5/CSS3)</span>
+                <span class="tech-badge">Channel Talk API</span>
+                <span class="tech-badge">Open Source Collective (Pending)</span>
+                <span class="tech-badge">Automated Webhooks</span>
+            </div>
+        </div>
+
     </div>
 
     <footer>
         <p>&copy; 2026 ryopc Global Initiative. All Rights Reserved.</p>
-        <div class="status-badge">Status: Under application for Open Source Collective (Covina, CA, USA)</div>
+        <p>Maintained by ryopcボランティア 運営事務局 | Director: game_ryo</p>
     </footer>
-
-    <!-- 🍪 クッキー同意バナーの構造 -->
-    <div id="cookie-banner">
-        <div class="cookie-content">
-            <div class="cookie-text">
-                We use cookies and integrate automated live support via Channel Talk to guarantee professional digital assistance. By clicking "Accept All", you consent to our data tracking optimization in absolute compliance with our international <a href="docs/privacy/">Privacy Policy</a>.
-            </div>
-            <div class="cookie-btns">
-                <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
-                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept All</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 🧠 チャネルトークの動的制御スクリプト -->
-    <script>
-        // ⚠️ チャネルトーク公式の埋め込み関数
-        function loadChannelTalk() {
-            (function() {
-                var w = window;
-                if (w.ChannelIO) { return (w.console.error || w.console.log || function(){})('ChannelIO script included twice.'); }
-                var ch = function() { ch.c(arguments); };
-                ch.q = []; ch.c = function(args) { ch.q.push(args); };
-                w.ChannelIO = ch;
-                function l() {
-                    if (w.ChannelIOInitialized) { return; }
-                    w.ChannelIOInitialized = true;
-                    var s = document.createElement('script');
-                    s.type = 'text/javascript'; s.async = true;
-                    s.src = 'channel.io';
-                    s.charset = 'UTF-8';
-                    var x = document.getElementsByTagName('script')[0];
-                    x.parentNode.insertBefore(s, x);
-                }
-                if (document.readyState === 'complete') { l(); } 
-                else { w.addEventListener('DOMContentLoaded', l); w.addEventListener('load', l); }
-            })();
-
-            // ⚠️ ここにあなたのチャネルトークの「本物のpluginKey」を貼り付けてください！
-            ChannelIO('boot', {
-                "pluginKey": "f06bb3b5-5394-4b24-b902-03d4110cfddd" 
-            });
-        }
-
-        // 🤖 クッキー自動感知ロジック
-        window.onload = function() {
-            var consent = localStorage.getItem('ryopc_cookie_consent');
-            if (consent === 'granted') {
-                // すでに同意済みの場合はチャネルトークを即時起動
-                loadChannelTalk();
-            } else if (consent === 'denied') {
-                // 拒否済みの場合は何もしない（起動させない）
-            } else {
-                // 初めて来たユーザーにはバナーをポーンと表示
-                document.getElementById('cookie-banner').style.display = 'block';
-            }
-        };
-
-        function acceptCookies() {
-            localStorage.setItem('ryopc_cookie_consent', 'granted');
-            document.getElementById('cookie-banner').style.display = 'none';
-            loadChannelTalk(); // その場でチャネルトークを起動！
-        }
-
-        function declineCookies() {
-            localStorage.setItem('ryopc_cookie_consent', 'denied');
-            document.getElementById('cookie-banner').style.display = 'none';
-            // チャネルトークは起動しない
-        }
-    </script>
 
 </body>
 </html>
